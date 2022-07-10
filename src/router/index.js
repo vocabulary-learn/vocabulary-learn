@@ -50,7 +50,7 @@ const router = createRouter({
     {
       path:"/modifylib",
       name:"modifylib",
-      component: () => import("../views/Modifylib.vue")
+      component: () => import("../views/ModifyLib.vue")
     }
   ]
 })
