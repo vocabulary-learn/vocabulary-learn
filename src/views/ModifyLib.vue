@@ -72,7 +72,7 @@ export default {
       console.log(this.libname,this.descriptinput,typeof(this.libname),typeof(this.descriptinput))
       var sublist=[]
       for(var i=0;i<list.length();i++){
-
+        var judge=0
         sublist.push(list[i])
         if(i%19==1){
           axios.post("api/v1/edit_category/"+id,{
@@ -88,10 +88,11 @@ export default {
             console.log(err);
             var errorword = err.response.data.info.split(" ")[2]
             alert("找不到單字"+errorword);
-            break;
+            judge=1;
           })  
           
         }
+        if(judge==1) break;
         if(i==list.length()-1){
           axios.post("api/v1/edit_category/"+id,{
               "name": this.libname,
@@ -109,9 +110,10 @@ export default {
             console.log(err);
             var errorword = err.response.data.info.split(" ")[2]
             alert("找不到單字"+errorword);
-            break;
+            judge=1;
           })          
-        } 
+        }
+        if(judge==1) break; 
       }
     },
     SelectCategory(){
