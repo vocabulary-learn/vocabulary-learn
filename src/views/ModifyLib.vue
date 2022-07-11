@@ -113,24 +113,6 @@ export default {
           })          
         } 
       }
-
-      axios.post("api/v1/edit_category/"+id,{
-          "name": this.libname,
-          "description": this.descriptinput,
-          "vol_list": list,
-        }
-      )
-      .then((res)=>{
-        console.log(res);
-        this.libname="";
-        this.descriptinput="";
-        this.wordinput="";
-      })
-      .catch((err) => {
-        console.log(err);
-        var errorword = err.response.data.info.split(" ")[2]
-        alert("找不到單字"+errorword);
-      })
     },
     SelectCategory(){
       console.log("selected")
