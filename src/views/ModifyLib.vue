@@ -70,9 +70,50 @@ export default {
       var list = this.wordinput.split(",")
       var id = document.getElementById("select").value
       console.log(this.libname,this.descriptinput,typeof(this.libname),typeof(this.descriptinput))
-      for(var i=0;i<this.categoryList.length;i++){
-        if(this.categoryList[i].id==parseInt(id)) name = this.categoryList[i].name
+      var sublist=[]
+      for(var i=0;i<list.length();i++){
+
+        sublist.push(list[i])
+        if(i%19==1){
+          axios.post("api/v1/edit_category/"+id,{
+              "name": "",
+              "description": "",
+              "vol_list": sublist,
+            }
+          )
+          .then((res)=>{
+            console.log(res);
+          })
+          .catch((err) => {
+            console.log(err);
+            var errorword = err.response.data.info.split(" ")[2]
+            alert("找不到單字"+errorword);
+            break;
+          })  
+          
+        }
+        if(i==list.length()-1){
+          axios.post("api/v1/edit_category/"+id,{
+              "name": this.libname,
+              "description": this.descriptinput,
+              "vol_list": sublist,
+            }
+          )
+          .then((res)=>{
+            console.log(res);
+            this.libname="";
+            this.descriptinput="";
+            this.wordinput="";
+          })
+          .catch((err) => {
+            console.log(err);
+            var errorword = err.response.data.info.split(" ")[2]
+            alert("找不到單字"+errorword);
+            break;
+          })          
+        } 
       }
+
       axios.post("api/v1/edit_category/"+id,{
           "name": this.libname,
           "description": this.descriptinput,
