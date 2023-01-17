@@ -15,7 +15,6 @@ axios.defaults.headers.post['Content-Type'] = 'application/x-www-fromurlencodeed
 axios.defaults.withCredentials = false;
 axios.interceptors.request.use((config) => {
   config.headers['X-Requested-With'] = 'XMLHttpRequest';
-  config.headers['X-CSRFToken'] = cookie.parse(document.cookie).csrftoken;
   return config
 });
 
