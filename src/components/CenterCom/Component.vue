@@ -20,7 +20,8 @@ export default {
         icon,
         btn,
     },
-    methods:{
+    mounted() {
+      onbeforeunload = (event) => { this.reload };
     }
 }
 </script>

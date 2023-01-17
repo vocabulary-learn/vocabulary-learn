@@ -39,6 +39,7 @@ export default {
         console.log(sec,typeof(sec))
         console.log("btn mounted")
         gsap.from(btn,{delay:2+sec,duration:1,opacity:0,stagger:0.5})
+        onbeforeunload = (event) => { this.reload };
     }
     
 }

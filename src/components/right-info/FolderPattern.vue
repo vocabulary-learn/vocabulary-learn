@@ -23,6 +23,9 @@ export default {
         return{
         imgsrc: "src/assets/folder.png",
         }
+    },
+    mounted() {
+      onbeforeunload = (event) => { this.reload };
     }
 
 

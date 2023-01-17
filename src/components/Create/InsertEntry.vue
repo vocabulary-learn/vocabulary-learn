@@ -13,6 +13,9 @@ export default {
             type:String,
             default:"",
         }
+    },
+    mounted() {
+      onbeforeunload = (event) => { this.reload };
     }
 }
 </script>

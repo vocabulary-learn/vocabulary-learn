@@ -75,8 +75,8 @@ export default {
       })
       .catch((err) => {
         console.log(err);
-        //var errorword = err.response.data.info.split(" ")[2]
-        //alert("找不到單字"+errorword);
+        var errorword = err.response.data.info.split(" ")[2]
+        alert("找不到單字"+errorword);
       })
       console.log("pass")
       

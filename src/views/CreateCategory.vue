@@ -22,16 +22,7 @@ export default {
     }
   },
   mounted() {
-    /*axios
-      .get('api/v1/sentence/worthwhile/')
-      .then(res => {
-        this.sentences = res.data
-      })
-      .catch(err => {
-        console.log(err)
-      })*/
       onbeforeunload = (event) => { this.reload };
-
   }
 }
 </script>

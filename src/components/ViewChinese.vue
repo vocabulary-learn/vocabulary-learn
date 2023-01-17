@@ -21,6 +21,9 @@ export default {
       close() {
         this.$emit('close'); 
       }
+    },
+    mounted() {
+      onbeforeunload = (event) => { this.reload };
     }
 }
 </script>

@@ -24,6 +24,9 @@ export default {
     data(){
         return{
         }
+    },
+    mounted() {
+      onbeforeunload = (event) => { this.reload };
     }
 
 }
