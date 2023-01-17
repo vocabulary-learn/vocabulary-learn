@@ -9,7 +9,7 @@ import router from './router'
 
 const app = createApp(App)
 
-axios.defaults.baseURL = 'https://vocabulary-learn-api.herokuapp.com/'
+axios.defaults.baseURL = 'https://vocabulary-learn-backend.onrender.com/'
 
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-fromurlencodeed';
 axios.defaults.withCredentials = false;
