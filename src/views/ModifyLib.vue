@@ -60,6 +60,9 @@ export default {
       this.categoryList = res.data
     } )
     .catch( (err) => { console.log(err)} )
+
+    onbeforeunload = (event) => { this.reload };
+
   },
   methods:{
     FormatJudge(){

@@ -8,6 +8,11 @@
 import Navbar from './components/Navbar.vue';
 export default {
   name: 'root',
+  prvoide(){
+    return{
+      reload : this.reload
+    }
+  },
   components: {
     Navbar,
   } 

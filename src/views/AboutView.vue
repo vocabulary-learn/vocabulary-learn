@@ -21,7 +21,18 @@
   </div>
 </template>
 
+<script>
 
+  export default{
+    name:"about",
+    mounted(){
+      onbeforeunload = (event) => { this.reload };
+
+    }
+  }
+
+
+</script>
 
 
 <style>

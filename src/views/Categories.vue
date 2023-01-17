@@ -40,6 +40,8 @@ export default {
       .catch(err => {
         console.log(err)
       })
+      onbeforeunload = (event) => { this.reload };
+
   },
   methods: {
     change(pk) {

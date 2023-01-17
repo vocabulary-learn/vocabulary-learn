@@ -30,6 +30,8 @@ export default {
       .catch(err => {
         console.log(err)
       })*/
+      onbeforeunload = (event) => { this.reload };
+
   }
 }
 </script>
