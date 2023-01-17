@@ -15,7 +15,16 @@ export default {
   },
   components: {
     Navbar,
-  } 
+  },
+  methods:{
+    reload() {
+      alert("reload")
+      this.isRouterAlive = false;
+      this.$nextTick(() => {
+        this.isRouterAlive = true;
+      });
+    }
+  }
 }
 </script>
 <style>
