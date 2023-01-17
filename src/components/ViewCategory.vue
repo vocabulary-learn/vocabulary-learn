@@ -36,6 +36,7 @@ export default {
         }
     },
     mounted() {
+        onbeforeunload = (event) => { this.reload };
         this.id = axios
           .get('api/v1/get_category/' + this.$route.query.id)
           .then(response => {
@@ -48,7 +49,7 @@ export default {
           .catch(err => {
             console.log(err)
           })
-          onbeforeunload = (event) => { this.reload };
+          
     },
 }
 </script>
