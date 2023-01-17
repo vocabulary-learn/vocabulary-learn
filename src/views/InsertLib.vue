@@ -30,6 +30,7 @@ import InputData from "../components/Create/InputData.vue"
 import SelectData from "../components/Create/SelectData.vue"
 
 export default {
+  inject:["reload"],
   name: '',
   components: {
     InputData,
@@ -56,6 +57,9 @@ export default {
       .catch(err => {
         console.log(err)
       })*/
+      console.log("123");
+      window.onbeforeunload = (event) => { this.reload(); };
+
   },
   methods:{
     sent(){
