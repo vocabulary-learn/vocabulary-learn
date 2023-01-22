@@ -5,11 +5,9 @@ import btn from "./btn.vue"
 </script>
 
 <template>
-    <div id="box" class="absolute" >
-        <icon ></icon>
-        <btn msg="歡迎來到文意字彙解題網站 !"></btn>
-        <btn msg="參閱教學" jump="https://hackmd.io/@MingdaoCP/SJXthxDF5"></btn>
-        
+    <div id="box" class="absolute bg-slate-400 rounded-lg" >
+        <icon></icon>
+        <btn></btn>
     </div>
 </template>
 
@@ -29,17 +27,14 @@ export default {
 <style>
 
     #box{
-
-        
         left: 50%;
         transform: translateX(-50%);
-        top: 20vh;
-        width: 70vh;
+        top: 15vh;
+        width: 200vh;
         height: 70vh;
         display: flex;
         flex-direction: column;
         align-items: center;
-        
     }
 
 </style>

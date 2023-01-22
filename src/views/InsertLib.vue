@@ -1,24 +1,23 @@
 <template>
-  <div id="formbox" class="absolute" >
+  <form id="formbox" class="absolute bg-slate-200" >
     <div style="height:100%;width: 100%;display: flex;flex-direction: column;align-items: center;justify-content: space-around;">
       <!-- submit.prevent可以避免表單重新整理 -->
-      <div id="BuildTitle">新增單字庫</div>
+      <div id="BuildTitle" class="m-8 text-3xl font-semibold">新增單字庫</div>
       <div class= "input" style="height:30%">
-          <div id="InputTitle" >題庫名稱</div>
-          <input id="in" :value="libname" @input="libname=$event.target.value"> 
+          <input :value="libname" @input="libname=$event.target.value" placeholder="單字庫名稱" class="p-2 rounded-lg in" required> 
       </div>
-      <div class= "input" style="height:30%" >
-          <div id="InputTitle" >題庫描述</div>
-          <input id="in" :value="descriptnput" @input="descriptnput=$event.target.value"> 
+      <div class="input" style="height:30%" >
+          <input :value="descriptnput" @input="descriptnput=$event.target.value" placeholder="介紹一下單字庫" class="p-2 rounded-lg in" required> 
       </div>
       <div class= "input" style="height:30%">
-        <div id="InputTitle"  >輸入單字</div>
-        <input :id="wordInputId" :value="wordinput" @input="wordinput=$event.target.value"> 
+        <input id="warn" :id="wordInputId" :value="wordinput" @input="wordinput=$event.target.value" placeholder="單字列表" class="p-2 rounded-lg in border-red-500" required> 
       </div>
-      <div v-if="notFormat" style="color:red;">輸入格式錯誤</div>
-      <button type="button" :disabled="ifbtndisable" id="BuildSendBtn" @click="sent">送出</button>
+      <div class="h-1/6">
+        <p class="text-red-600 text-sm" :hidden="notFormat == false" >請以逗號隔開且勿留空格</p>
+      </div>
+      <button type="submit" id="BuildSendBtn" @click="sent" class="rounded-lg mb-4 bg-slate-300 p-1">送出</button>
     </div>
-  </div>
+  </form>
 </template>
 
 <script>
@@ -47,15 +46,7 @@ export default {
     }
   },
   mounted() {
-    //alert("輸入單字時，請使用小寫，有多個單字請以,隔開，否則將無法送出");
-    /*axios
-      .get('api/v1/sentence/worthwhile/')
-      .then(res => {
-        this.sentences = res.data
-      })
-      .catch(err => {
-        console.log(err)
-      })*/
+      document.getElementById('warn').style.borderWidth = 0 + 'px';
       onbeforeunload = (event) => { this.reload };
   },
   methods:{
@@ -93,58 +84,48 @@ export default {
       }
       for(var i=0;i<str.length;i++ ){
         if(str[i]==',' || (str[i].charCodeAt()>=97 && str[i].charCodeAt()<=122)){
-          console.log("able");
           this.ifbtndisable = false;
           this.notFormat=false;
-          this.wordInputId = "in"
+          this.wordInputId = "in";
         }
         else{
-          console.log("disable");
           this.ifbtndisable = true; 
           this.notFormat=true;
           this.wordInputId = "ErrorIn"
           break;
         }
       }
+    },
+    notFormat: function() {
+      if(this.notFormat) document.getElementById('warn').style.borderWidth = 2 + 'px';
+      else document.getElementById('warn').style.borderWidth = 0 + 'px';
     }
   }
 }
 </script>
 <style>
     #formbox{
-        background-color: #a0d5f4;
         left: 50%;
         transform: translateX(-50%);
-        top: 20vh;
-        width: 70vh;
-        height: 60vh;
+        top: 15%;
+        width: 55%;
+        height: 70%;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: space-around;
         border-radius: 15px;
         border-width: 3px;
-        border-color: rgb(26, 118, 60);
-    }
-    #BuildTitle{
-      height: 30px;
-      font-size: 30px;
-      font-weight: 600;
-      color:black;
     }
     #BuildSendBtn{
         height: 8%;
         width: 20%;
-        border-radius: 15px;
-        background-color: #4CAF50;
         color: black;
         text-align: center;
         font-size: 20px;
         font-weight:600;
     }
     #BuildSendBtn:hover{
-        border:3px solid;
-        border-color: #4CAF50;
         background-color: white;
     }
     .input{
@@ -155,29 +136,13 @@ export default {
         width: 100%;
         height: 15%;
     }
-    #in{
+    .in{
         height: 50%;
         width: 60%;
         border-width: 2px;
-        border-color: black;
     }
-    #ErrorIn{
-        height: 50%;
-        width: 60%;
-        border-width: 2px;
-        border-color: red;
-    }
-    #InputTitle{
-        border-radius: 15px;
-        height: 50%;
-        width: 20%;
-        background-color: #4CAF50;
-        font-size: 20px;
-        font-weight: 600;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: black;
+    input:focus{
+      outline: none;
     }
 
 

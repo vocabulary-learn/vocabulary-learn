@@ -49,7 +49,6 @@ export default {
     #SelectTitle{
         height: 50%;
         width: 20%;
-        background-color: #4CAF50;
         font-size: 20px;
         font-weight: 600;
         display: flex;

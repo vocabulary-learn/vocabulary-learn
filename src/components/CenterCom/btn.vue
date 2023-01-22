@@ -4,7 +4,8 @@
 
 
 <template>
-  <button id="btn" ref="btn" @click="webJump()">{{ msg }}</button>
+  <button id="btn" ref="btn1" @click="webJump('/about')" class="w-1/4 bg-sky-400  text-lg hover:text-white">了解我們</button>
+  <button id="btn" ref="btn2" @click="webJump('/build')" class="w-1/4 bg-green-400 text-lg hover:text-white">立即開始</button>
 </template>
 
 <script>
@@ -18,27 +19,18 @@ export default {
             type:String,
             default:"0",
         }, // btn time delat
-        jump:{
-            type:String,
-            default:"None"
-        } // web to go
-        
     },
     methods:{
-        webJump(){
-            const herf = this.$props.jump
-            if(herf != "None"){
-                window.open(herf);
-            }
+        webJump(link){
+            window.location.href=link
         }
     },
     mounted(){
-        const btn = this.$refs.btn
-        console.log(this)
+        const btn1 = this.$refs.btn1
+        const btn2 = this.$refs.btn2
         const sec = Number(this.$props.second)
-        console.log(sec,typeof(sec))
-        console.log("btn mounted")
-        gsap.from(btn,{delay:2+sec,duration:1,opacity:0,stagger:0.5})
+        gsap.from(btn1,{delay:2+sec,duration:1,opacity:0,stagger:0.5})
+        gsap.from(btn2,{delay:2+sec,duration:1,opacity:0,stagger:0.5})
         onbeforeunload = (event) => { this.reload };
     }
     
@@ -46,22 +38,12 @@ export default {
 </script>
 
 <style>
-
     #btn{
         height: 10%;
-        width: 90%;
         margin: 5px;
-        border-radius: 15px;
-        background-color: #4CAF50;
-        color: black;
+        border-radius: 8px;
         text-align: center;
-        font-size: 180%;
         font-weight:600;
-    }
-    #btn:hover{
-        border:3px solid;
-        border-color: #4CAF50;
-        background-color: white;
     }
 
 </style>

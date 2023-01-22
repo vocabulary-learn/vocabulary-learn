@@ -19,15 +19,5 @@ export default {
       sentences: [],
     }
   },
-  mounted() {
-    /*axios
-      .get('api/v1/sentence/worthwhile/')
-      .then(res => {
-        this.sentences = res.data
-      })
-      .catch(err => {
-        console.log(err)
-      })*/
-  }
 }
 </script>

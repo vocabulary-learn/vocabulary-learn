@@ -1,28 +1,55 @@
 <template>
 
-<div id="InsertEntryBox" class="absolute ">
-  <!-- <InsertEntry msg="插入單字" ToLocation="/insertword"></InsertEntry> -->
-  <InsertEntry msg="新增單字庫" ToLocation="/insertlib"></InsertEntry>
-  <InsertEntry msg="修改單字庫" ToLocation="/modifylib"></InsertEntry>
+<div id="InsertEntryBox" class="absolute rounded-xl bg-slate-200 flex flex-row p-10">
+  <p class="w-full text-center text-2xl font-bold mb-2">請選擇功能</p>
+  <button class="basis-1/2 border-2 border-black rounded-xl px-4" @click="get(1)" id="f1">
+    <div class=" bg-sky-200 rounded-lg p-2"><p class="text-center font-semibold text-xl">新增單字庫</p></div>
+    <div class="mt-6 mb-6 mr-4 font-bold">建立單字庫進行練習，須含題庫名稱、描述、單字。</div>
+  </button>
+  <button class="basis-1/2 border-2 border-black rounded-xl px-4" @click="get(2)" id="f2">
+    <div class=" bg-sky-200 rounded-lg p-2"><p class="text-center font-semibold text-xl">修改單字庫</p></div>
+    <div class="mt-6 mb-6 font-bold">修改單字庫內容，包括題庫名稱、描述、單字皆可修改</div>
+  </button>
+  <button @click="smt()" :disabled='clk == 0' id="submit" class="w-full bg-slate-300 font-bold rounded-lg mt-10 float-right">
+    前往
+  </button>
 </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import InsertEntry from "../components/Create/InsertEntry.vue"
 
 export default {
   name: '',
   components: {
-    InsertEntry,
   },
   data() {
     return {
       sentences: [],
+      clk: 0,
     }
   },
   mounted() {
+      document.getElementById('f2').style.borderStyle = 'none';
+      document.getElementById('f1').style.borderStyle = 'none';
+      this.clk = 0;
       onbeforeunload = (event) => { this.reload };
+  },
+  methods: {
+    get(num) {
+      if(num == 1) {
+        if(this.clk != 1) document.getElementById('f1').style.borderStyle = 'solid', document.getElementById('f2').style.borderStyle = 'none', this.clk = 1;
+        else document.getElementById('f1').style.borderStyle = 'none', this.clk = 0;
+      }
+      else {
+        if(this.clk != 2) document.getElementById('f2').style.borderStyle = 'solid', document.getElementById('f1').style.borderStyle = 'none', this.clk = 2;
+        else document.getElementById('f2').style.borderStyle = 'none', this.clk = 0;
+      } 
+      if(this.clk == 0) document.getElementById('submit').style.color
+    },
+    smt() {
+      if(this.clk == 1) window.location.href = '/insertlib';
+      else if(this.clk == 2) window.location.href = '/modifylib';
+    }
   }
 }
 </script>
@@ -30,35 +57,13 @@ export default {
     #InsertEntryBox{
         left: 50%;
         transform: translateX(-50%);
-        top: 20vh;
-        width: 70vh;
-        height: 70vh;
+        top: 17%;
+        width: 50%;
+        height: 55%;
         display: flex;
         flex-direction: row;
-        align-content: center;
         justify-content: flex-start;
         flex-wrap: wrap;
-    }
-    #BuildTitle{
-      height: 30px;
-      font-size: 30px;
-      font-weight: 600;
-      color:black;
-    }
-    #BuildSendBtn{
-        height: 8%;
-        width: 20%;
-        border-radius: 15px;
-        background-color: #4CAF50;
-        color: black;
-        text-align: center;
-        font-size: 20px;
-        font-weight:600;
-    }
-    #BuildSendBtn:hover{
-        border:3px solid;
-        border-color: #4CAF50;
-        background-color: white;
     }
 
 </style>>
