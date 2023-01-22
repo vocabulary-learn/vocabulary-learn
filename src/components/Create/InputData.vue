@@ -1,7 +1,7 @@
 <template>
     <div class= "input">
         <div id="InputTitle">{{Msg}}</div>
-        <input id="in"> 
+        <input id="in" class="px-2"> 
     </div>
 </template>
 
@@ -42,8 +42,6 @@ export default {
     #in{
         height: 50%;
         width: 60%;
-        border-width: 2px;
-        border-color: black;
     }
     #InputTitle{
         height: 50%;
@@ -54,6 +52,9 @@ export default {
         justify-content: center;
         align-items: center;
         color: black;;
+    }
+    input:focus{
+      outline: none;
     }
 
 

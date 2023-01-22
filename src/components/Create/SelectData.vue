@@ -56,7 +56,9 @@ export default {
         align-items: center;
         color: black;
     }
-
+    input:focus{
+      outline: none;
+    }
 
 
 </style>

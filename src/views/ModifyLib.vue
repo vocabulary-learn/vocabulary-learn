@@ -1,30 +1,31 @@
 <template>
-  <div id="formbox" class="absolute" >
+  <form id="formbox" class="absolute bg-slate-200" >
     <div style="height:100%;width: 100%;display: flex;flex-direction: column;align-items: center;justify-content: space-around;">
-      <div id="BuildTitle" >修改單字</div>
+      <div id="BuildTitle" class="m-8 text-3xl font-semibold">修改單字庫</div>
       <div class= "select" style="height:30%">
-        <div id="SelectTitle" >選擇題庫</div>
-        <select id="select" @change="SelectCategory">
-            <option></option>
-            <option v-for="(item,index) in categoryList" :key="index" :value="item.id" >{{ item.name }}</option>
+        <div class="bg-slate-300 p-3 rounded font-semibold">選擇題庫</div>
+        <select id="select" @change="SelectCategory" class="rounded-lg focus:outline-none">
+            <option v-for="(item,index) in categoryList" :key="index" :value="item.id" class="font-medium rounded">{{ item.name }}</option>
         </select> 
       </div>
-      <div class= "input" style="height:30%">
-        <div id="InputTitle" >修改名稱</div>
-        <input id="in" :value="libname" @input="libname=$event.target.value"> 
+      <div class="input" style="height:30%">
+        <div class="bg-slate-300 p-3 rounded font-semibold">修改名稱</div>
+        <input :value="libname" @input="libname=$event.target.value" class="rounded-lg border-0 p-2 in disabled:bg-slate-100" required :disabled="!chose"> 
       </div>
       <div class= "input" style="height:30%">
-        <div id="InputTitle" >修改敘述</div>
-        <input id="in" :value="descriptinput" @input="descriptinput=$event.target.value"> 
+        <div class="bg-slate-300 p-3 rounded font-semibold">修改敘述</div>
+        <input :value="descriptinput" @input="descriptinput=$event.target.value" class="rounded-lg p-2 in disabled:bg-slate-100" required :disabled="!chose"> 
       </div>
       <div class= "input" style="height:30%">
-        <div id="InputTitle" >修改單字</div>
-        <input :id="wordInputId" :value="wordinput" @input="wordinput=$event.target.value"> 
+        <div class="bg-slate-300 p-3 rounded font-semibold">修改單字</div>
+        <input id="warn" :id="wordInputId" :value="wordinput" @input="wordinput=$event.target.value" class="p-2 rounded-lg in border-red-500 disabled:bg-slate-100" required :disabled="!chose"> 
       </div>
-      <div v-if="notFormat" style="color:red;">輸入格式錯誤</div>
-      <button type="button" :disabled="ifbtndisable" id="BuildSendBtn" @click="sent">送出</button>
+      <div class="h-1/6">
+        <p class="text-red-600 text-sm" :hidden="notFormat == false" >請以逗號隔開且勿留空格</p>
+      </div>
+      <button type="submit" id="BuildSendBtn" @click="sent()" class="rounded-lg mb-4 bg-slate-300 p-1">送出</button>
     </div>
-  </div>
+  </form>
 </template>
 
 <script>
@@ -32,14 +33,10 @@
 import HelloWorld from '@/components/HelloWorld.vue'
 import axios from 'axios'
 import { onMounted } from 'vue'
-import InputData from "../components/Create/InputData.vue"
-import SelectData from "../components/Create/SelectData.vue"
 
 export default {
   name: '',
   components: {
-    InputData,
-    SelectData,
   },
   data() {
     return {
@@ -51,6 +48,7 @@ export default {
       notFormat:false,
       wordInputId: "in",
       categoryList: [],
+      chose: false,
     }
   },
   mounted() {
@@ -126,6 +124,7 @@ export default {
         this.wordinput = res.data.vol_list.join(",")
         this.descriptinput =  res.data.description;
         this.libname = res.data.name
+        this.chose = true;
       } )
       .catch( (err) => console.log(err) )
     }
@@ -154,26 +153,32 @@ export default {
           break;
         }
       }
+    },
+    notFormat: function() {
+      if(this.notFormat) document.getElementById('warn').style.borderWidth = 2 + 'px';
+      else document.getElementById('warn').style.borderWidth = 0 + 'px';
     }
   }
 }
 
 </script>
 <style>
+    .in {
+      height: 50%;
+      width: 60%;
+    }
     #formbox{
-        background-color: #a0d5f4;
         left: 50%;
         transform: translateX(-50%);
-        top: 20vh;
-        width: 70vh;
-        height: 60vh;
+        top: 15%;
+        width: 55%;
+        height: 70%;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: space-around;
         border-radius: 15px;
         border-width: 2px;
-        border-color: rgb(26, 118, 60);
     }
     #BuildTitle{
       height: 30px;
@@ -184,8 +189,6 @@ export default {
     #BuildSendBtn{
         height: 8%;
         width: 20%;
-        border-radius: 15px;
-        background-color: #4CAF50;
         color: black;
         text-align: center;
         font-size: 20px;
@@ -193,8 +196,6 @@ export default {
     }
     #BuildSendBtn:hover{
         text-align: center;
-        border:3px solid;
-        border-color: #4CAF50;
         background-color: white;
     }
     .input{
@@ -205,12 +206,6 @@ export default {
         width: 100%;
         height: 15%;
     }
-    #in{
-        height: 50%;
-        width: 60%;
-        border-width: 2px;
-        border-color: black;
-    }
     #ErrorIn{
         height: 50%;
         width: 60%;
@@ -220,14 +215,11 @@ export default {
     #select{
         height: 50%;
         width: 60%; 
-        border-width: 2px;
-        border-color: black;
     }
     #InputTitle{
         border-radius: 15px;
         height: 50%;
         width: 20%;
-        background-color: #4CAF50;
         font-size: 20px;
         font-weight: 600;
         display: flex;
@@ -247,7 +239,6 @@ export default {
         border-radius: 15px;
         height: 50%;
         width: 20%;
-        background-color: #4CAF50;
         font-size: 20px;
         font-weight: 600;
         display: flex;
@@ -255,5 +246,8 @@ export default {
         align-items: center;
         color: black;
     }
+    input:focus{
+      outline: none;
+    }
 
-</style>>
+</style>
