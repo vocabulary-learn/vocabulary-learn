@@ -16,7 +16,7 @@ export default {
     name: "icon",
     data(){
         return{
-            imgsrc: "/mdcpp_icon.png",
+            imgsrc: "/icon.png",
         }
     },
     methods:{
