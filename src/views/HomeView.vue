@@ -19,5 +19,8 @@ export default {
       sentences: [],
     }
   },
+  mounted() {
+    document.querySelector('meta[name="description"]').setAttribute("content", '文意字彙線上平台的首頁');
+  }
 }
 </script>

@@ -58,7 +58,7 @@ export default {
       this.categoryList = res.data
     } )
     .catch( (err) => { console.log(err)} )
-
+    document.querySelector('meta[name="description"]').setAttribute("content", '修改單字庫的頁面');
     onbeforeunload = (event) => { this.reload };
 
   },

@@ -4,8 +4,8 @@
 
 
 <template>
-  <button id="btn" ref="btn1" @click="webJump('/about')" class="w-1/4 bg-sky-400  text-lg hover:text-white">了解我們</button>
-  <button id="btn" ref="btn2" @click="webJump('/build')" class="w-1/4 bg-green-400 text-lg hover:text-white">立即開始</button>
+  <button ref="btn1" @click="webJump('/about')" class="btn w-1/4 bg-sky-400  text-lg hover:text-white">了解我們</button>
+  <button ref="btn2" @click="webJump('/build')" class="btn w-1/4 bg-green-400 text-lg hover:text-white">立即開始</button>
 </template>
 
 <script>
@@ -38,7 +38,7 @@ export default {
 </script>
 
 <style>
-    #btn{
+    .btn{
         height: 10%;
         margin: 5px;
         border-radius: 8px;

@@ -21,7 +21,7 @@
     name:"about",
     mounted(){
       onbeforeunload = (event) => { this.reload };
-
+      document.querySelector('meta[name="description"]').setAttribute("content", '關於建立這個平台的動機...');
     }
   }
 

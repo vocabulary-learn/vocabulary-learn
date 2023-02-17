@@ -32,6 +32,7 @@ export default {
       document.getElementById('f2').style.borderStyle = 'none';
       document.getElementById('f1').style.borderStyle = 'none';
       this.clk = 0;
+      document.querySelector('meta[name="description"]').setAttribute("content", '選擇所想要的功能 ( 新增資料庫 / 修改資料庫 )');
       onbeforeunload = (event) => { this.reload };
   },
   methods: {

@@ -4,7 +4,7 @@
 
 <template>
   <div class="flex items-center justify-center">
-    <img :src="imgsrc" ref="imag" class="imag w-1/3 mr-16" @load="drop()" >
+    <img :src="imgsrc" alt="icon" ref="imag" class="imag w-1/3 mr-16" @load="drop()" >
     <p ref="_imag" class="imag w-1/3 text-3xl font-bold" @load="drop()" >英文文意字彙<br>不再是小考罩門</p>
   </div>
   

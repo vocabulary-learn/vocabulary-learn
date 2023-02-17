@@ -48,6 +48,7 @@ export default {
     }
   },
   mounted() {
+    document.querySelector('meta[name="description"]').setAttribute("content", '問題回答頁面 - wordlearner.tech');
     onbeforeunload = (event) => { this.reload };
     axios.get('api/v1/get_category/' + this.$route.query.id)
       .then(res => {
