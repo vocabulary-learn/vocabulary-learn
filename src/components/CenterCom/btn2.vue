@@ -4,7 +4,7 @@
 
 
 <template>
-  <button ref="btn2" @click="webJump('/build')" class="btn w-1/4 bg-green-400 text-lg hover:text-white">立即開始</button>
+  <button ref="btn2" @click="webJump('/build')" class="btn w-1/4 bg-green-400 text-lg" disabled>點選右上角立即開始</button>
 </template>
 
 <script>
