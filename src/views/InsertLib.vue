@@ -48,7 +48,7 @@ export default {
   mounted() {
       document.getElementById('warn').style.borderWidth = 0 + 'px';
       document.querySelector('meta[name="description"]').setAttribute("content", '新增一個單字庫的頁面');
-      //onbeforeunload = (event) => { this.reload };
+      onbeforeunload = (event) => { this.reload };
   },
   methods:{
     sent(){

@@ -10,10 +10,9 @@
 
 <script>
 import Default from '../../views/default.vue'
-import btn from '../CenterCom/btn.vue'
 
 export default {
-  components: { btn, Default },
+  components: {  Default },
 
     props:{
         Msg:{

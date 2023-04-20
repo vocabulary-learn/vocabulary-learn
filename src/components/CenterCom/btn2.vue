@@ -4,7 +4,6 @@
 
 
 <template>
-  <button ref="btn1" @click="webJump('/about')" class="btn w-1/4 bg-sky-400  text-lg hover:text-white">了解我們</button>
   <button ref="btn2" @click="webJump('/build')" class="btn w-1/4 bg-green-400 text-lg hover:text-white">立即開始</button>
 </template>
 
