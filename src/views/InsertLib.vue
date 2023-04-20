@@ -1,5 +1,5 @@
 <template>
-  <form id="formbox" class="absolute bg-slate-200" >
+  <div id="formbox" class="absolute bg-slate-200" >
     <div style="height:100%;width: 100%;display: flex;flex-direction: column;align-items: center;justify-content: space-around;">
       <!-- submit.prevent可以避免表單重新整理 -->
       <div id="BuildTitle" class="m-8 text-3xl font-semibold">新增單字庫</div>
@@ -17,7 +17,7 @@
       </div>
       <button type="submit" id="BuildSendBtn" @click="sent" class="rounded-lg mb-4 bg-slate-300 p-1">送出</button>
     </div>
-  </form>
+  </div>
 </template>
 
 <script>
@@ -48,7 +48,7 @@ export default {
   mounted() {
       document.getElementById('warn').style.borderWidth = 0 + 'px';
       document.querySelector('meta[name="description"]').setAttribute("content", '新增一個單字庫的頁面');
-      onbeforeunload = (event) => { this.reload };
+      //onbeforeunload = (event) => { this.reload };
   },
   methods:{
     sent(){
@@ -78,6 +78,8 @@ export default {
     wordinput: function(){
       var str = this.wordinput
       console.log("~"+str)
+      console.log("2 "+this.libname)
+      console.log("3 "+this.descriptnput)
       if(str==""){
         this.notFormat=false; 
         this.wordInputId = "in"

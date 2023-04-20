@@ -36,6 +36,7 @@ export default {
         }
     },
     mounted() {
+      document.querySelector('meta[name="description"]').setAttribute("content", '文意字彙線上平台的題庫列表');
         onbeforeunload = (event) => { this.reload };
         this.id = axios
           .get('api/v1/get_category/' + this.$route.query.id)
