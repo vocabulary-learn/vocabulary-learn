@@ -11,7 +11,7 @@
       <br>在這個網站中，我們採用 Vue 作為前端的框架，以 Django 作為後端，以 Postgresql 作為資料庫。
       <br>因為技術不足(對以上技術不算熟悉)，雖然現在這個網站還不成熟，但希望之後能繼續補足精進這個網站。
     </p>
-    <div class="font-semibold text-2xl text-gray-600 ml-20 mr-20 mt-10">網站開發者 : 楊翔宇、謝侑哲</div>
+    <div class="font-semibold text-2xl text-gray-600 ml-20 mr-20 mt-10">網站開發者 : 楊翔宇、林品丞、蔡承志</div>
   </div>
 </template>
 
